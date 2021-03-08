@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Notes API
+  description: An API that provides access to available notes based on the id and can create notes.
+  
+paths: 
+  /notes:
+    get:
+      description: To obtain information about all the notes
+      
+      responses:
+        200:
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id: 
+                      type: integer
+                      example: 1
+                  
+                    title:
+                      type: string
+                      example: Meeting
+                  
+                    description:
+                      type: string
+                      example: Have meeting
+    
+    post:
+      description: Creates a new notes
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+           schema:
+            type: object
+            properties:
+              id: 
+                type: integer
+                example: 1
+                  
+              title:
+                type: string
+                example: Meeting
+                  
+              description:
+                type: string
+                example: Have meeting
+      responses:
+        200:
+          description: Successfully new note is created
+          
+  /notes/{id}:
+    get:
+      description: Obtain information about a specific notes
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of notes
+          schema:
+            type: integer
+            example: 2
+            
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: 
+                    type: integer
+                    example: 1
+                  
+                  title:
+                    type: string
+                    example: Meeting
+                  
+                  description:
+                    type: string
+                    example: Have meeting
+            
+  
+         
+                  
